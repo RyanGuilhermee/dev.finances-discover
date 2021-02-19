@@ -9,9 +9,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/*#0d1117*/ /*#f0f2f5*/
 body {
-    background: #f0f2f5;
+    background: #0d1117;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -26,9 +26,9 @@ h2 {
     color: var(--dark-blue);
     font-weight: normal;
 }
-
+/*#161b22*/ /*#2D4A22*/
 header {
-    background: #2D4A22;
+    background: #161b22; 
     padding: 2rem 0 10rem;
     text-align: center;
 }
@@ -46,9 +46,9 @@ header {
     color: #fff;
     margin-top: 0;
 }
-
+/*#fff*/ /*#cad0d8*/
 .card {
-    background: #fff;
+    background: #cad0d8;
     padding: 1.5rem 2rem;
     border-radius: 0.25rem;
     margin-bottom: 2rem;
@@ -68,10 +68,10 @@ header {
     line-height: 3rem;
     margin-top: 1rem;
 }
-
+/*var(--green)*/ /*#238636*/
 .card.total {
-    background: var(--green);
-    color: #fff;
+    background: #238636;
+    color: #eee6e6; /*#fff*/ /*#eee6e6*/
 }
 
 .sr-only {
@@ -97,14 +97,14 @@ header {
     border-spacing: 0 0.5rem;
     color: #969cb3;
 }
-
+/*#161b22*/ /*#fff*/
 #data-table tbody td {
-    background: #fff;
+    background: #161b22;
     padding: 1rem 2rem;
 }
-
+/*#161b22*/ /*#fff*/ 
 #data-table th {
-    background: #fff;
+    background: #161b22;
     font-weight: normal;
     padding: 1rem 2rem;
     text-align: left;
@@ -127,9 +127,9 @@ table tbody tr:hover {
     transform: scale(1.02);
     transition: all 0.2s;
 }
-
+/*var(--dark-blue)*/ /*#969cb3*/
 td.description {
-    color: var(--dark-blue);
+    color: #969cb3;
 }
 
 td.income {
@@ -139,29 +139,29 @@ td.income {
 td.expense {
     color: #e92929;
 }
-
+/*var(--green)*/ /*#238636*/
 a {
-    color: var(--green);
+    color: #238636;
     text-decoration: none;
 }
-
+/*var(--light-green)*/ /*var(--green)*/
 a:hover {
-    color: var(--light-green);
+    color: #33a84b;
 }
-
+/*var(--green)*/ /*#238636*/
 button {
     width: 100%;
     height: 50px;
     border: none;
     color: white;
-    background: var(--green);
+    background: #238636;
     padding: 0;
     border-radius: 0.25rem;
     cursor: pointer;
 }
-
+/*var(--light-green)*/ /*#33a84b*/
 button:hover {
-    background: var(--light-green);
+    background: #33a84b;
 }
 
 .button.new {
@@ -197,9 +197,9 @@ button:hover {
     visibility: hidden;
     z-index: 999;
 }
-
+/*#f0F2f5*/ /*#0d1117*/
 .modal {
-    background: #f0F2f5;
+    background: #0d1117;
     padding: 2.4rem;
     position: relative;
     z-index: 1;
@@ -218,20 +218,34 @@ button:hover {
 #form h2 {
     margin-top: 0;
 }
-
+/*none*/ /*#161b22*/
 input {
     border: none;
     border-radius: 0.2rem;
     padding: 0.8rem;
     width: 100%;
+    background: #161b22;
+    color: #cad0d8;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
 
 .input-group  {
     margin-top: 0.8rem;
 }
-
+/*none*/ /*#969cb3*/
 .input-group small {
     opacity: 0.4;
+    color: #969cb3;
 }
 
 .input-group.actions {
