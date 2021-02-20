@@ -20,6 +20,8 @@
 
     <header>
         <img src="assets/logo.svg" alt="logo Dev Finance">
+        <input type="checkbox" class="dark-mode-checkbox" id="liga-desliga" onclick="darkMode()">
+        <label for="liga-desliga" class="dark-mode-botao"></label>
     </header>
     <main class="container">
         <section id="balance">
@@ -79,7 +81,8 @@
                 <form action="" onsubmit="form(event)">
                     <div class="input-group">
                         <label class="sr-only" for="description">Descrição</label>
-                        <input type="text" id="description" name="description" placeholder="Descrição" autocomplete="off">
+                        <input type="text" id="description" name="description" placeholder="Descrição"
+                            autocomplete="off">
                     </div>
                     <div class="input-group">
                         <label class="sr-only" for="amount">Valor</label>

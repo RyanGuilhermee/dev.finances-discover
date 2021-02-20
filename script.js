@@ -88,7 +88,7 @@ function total() {
 }
 
 //Tabela transações / balance
-const transactions = getStorage();
+const transactions = getStorageTransactions();
 
 function addTransaction(transaction) {
     transactions.push(transaction);
@@ -104,12 +104,12 @@ function removeTransaction(index) {
 
 function createTransactions(element, index, cssClass) {
     const amount = formatCurrency(element.amount);
-
+    const darkClass = checkCheckbox()? 'dark-mode-active' : '';
     const html = `
-    <td class="description">${element.description}</td>
-    <td class="${cssClass}">${amount}</td>
-    <td class="date">${element.date}</td>
-    <td><img onclick="removeTransaction(${index})" src="assets/minus.svg" alt="Remover transação"></td>
+    <td class="description ${darkClass}">${element.description}</td>
+    <td class="${cssClass} ${darkClass}">${amount}</td>
+    <td class="date ${darkClass}">${element.date}</td>
+    <td class="${darkClass}" style="cursor: pointer;"><img  onclick="removeTransaction(${index})" src="assets/minus.svg" alt="Remover transação"></td>
     ` ;
 
     return html;
@@ -184,19 +184,79 @@ function formatValues(values) {
 }
 
 //Local storage
-function getStorage() {
-    return localStorage.getItem('dev.finances-transactions') !== null ? JSON.parse(localStorage.getItem('dev.finances-transactions')) : [];
+function getStorageTransactions() {
+    return localStorage.getItem('dev.finances-transactions') !== null ? 
+    JSON.parse(localStorage.getItem('dev.finances-transactions')) : [];
 }
 
-function setStorage() {
+function getStorageDarkMode() {
+    return localStorage.getItem('dark-mode')? true : false;
+}
+
+function setStorage(value) {
     localStorage.setItem('dev.finances-transactions', JSON.stringify(transactions));
+    localStorage.setItem('dark-mode', value);
+}
+
+//dark mode
+function darkMode() {
+
+    if (checkCheckbox()) {
+        document.querySelector('body').classList.add('dark-mode-active');
+        document.querySelectorAll('.card')[0].classList.add('dark-mode-active');
+        document.querySelectorAll('.card')[1].classList.add('dark-mode-active');
+        document.querySelector('.card.total').classList.add('dark-mode-active');
+        document.querySelector('a').classList.add('dark-mode-active');
+        document.querySelectorAll('#data-table th')[0].classList.add('dark-mode-active');
+        document.querySelectorAll('#data-table th')[1].classList.add('dark-mode-active');
+        document.querySelectorAll('#data-table th')[2].classList.add('dark-mode-active');
+        document.querySelectorAll('#data-table th')[3].classList.add('dark-mode-active');
+        document.querySelector('.modal').classList.add('dark-mode-active');
+        document.querySelector('input#description').classList.add('dark-mode-active');
+        document.querySelector('input#amount').classList.add('dark-mode-active');
+        document.querySelector('input#date').classList.add('dark-mode-active');
+        document.querySelector('button').classList.add('dark-mode-active');
+        document.querySelector('.input-group small').classList.add('dark-mode-active');
+        document.querySelector('#form h2').classList.add('dark-mode-active');
+
+        reload();
+    }
+    else {
+        document.querySelector('body').classList.remove('dark-mode-active');
+        document.querySelectorAll('.card')[0].classList.remove('dark-mode-active');
+        document.querySelectorAll('.card')[1].classList.remove('dark-mode-active');
+        document.querySelector('.card.total').classList.remove('dark-mode-active');
+        document.querySelector('a').classList.remove('dark-mode-active');
+        document.querySelector('#data-table th').classList.remove('dark-mode-active');
+        document.querySelectorAll('#data-table th')[1].classList.remove('dark-mode-active');
+        document.querySelectorAll('#data-table th')[2].classList.remove('dark-mode-active');
+        document.querySelectorAll('#data-table th')[3].classList.remove('dark-mode-active');
+        document.querySelector('.modal').classList.remove('dark-mode-active');
+        document.querySelector('input#description').classList.remove('dark-mode-active');
+        document.querySelector('input#amount').classList.remove('dark-mode-active');
+        document.querySelector('input#date').classList.remove('dark-mode-active');
+        document.querySelector('button').classList.remove('dark-mode-active');
+        document.querySelector('.input-group small').classList.remove('dark-mode-active');
+        document.querySelector('#form h2').classList.remove('dark-mode-active');
+        
+        reload();
+    }
+}
+
+function checkCheckbox() {
+    if (document.querySelector('input.dark-mode-checkbox').checked) {
+        return true;
+    }
+    return false;
 }
 
 //Início / reload
 function init() {
     createDOM();
     updateBalance();
-    getStorage();
+    getStorageTransactions();
+    console.log(getStorageDarkMode())
+    getStorageDarkMode();
 }
 
 function reload() {
