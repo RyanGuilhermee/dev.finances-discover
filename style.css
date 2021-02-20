@@ -10,10 +10,6 @@
     box-sizing: border-box;
 }
 
-/*#0d1117*/
-
-/*#f0f2f5*/
-
 body {
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
@@ -30,10 +26,6 @@ h2 {
     color: var(--dark-blue);
     font-weight: normal;
 }
-
-/*#161b22*/
-
-/*#2D4A22*/
 
 header {
     background: #2D4A22;
@@ -54,10 +46,6 @@ header {
     color: #fff;
     margin-top: 0;
 }
-
-/*#fff*/
-
-/*#cad0d8*/
 
 .card {
     background: #fff;
@@ -81,15 +69,9 @@ header {
     margin-top: 1rem;
 }
 
-/*var(--green)*/
-
-/*#238636*/
-
 .card.total {
     background: var(--green);
     color: #fff;
-    /*#fff*/
-    /*#eee6e6*/
 }
 
 .sr-only {
@@ -116,18 +98,10 @@ header {
     color: #969cb3;
 }
 
-/*#161b22*/
-
-/*#fff*/
-
 #data-table tbody td {
     background: #fff;
     padding: 1rem 2rem;
 }
-
-/*#161b22*/
-
-/*#fff*/
 
 #data-table th {
     background: #fff;
@@ -154,10 +128,6 @@ table tbody tr:hover {
     transition: all 0.2s;
 }
 
-/*var(--dark-blue)*/
-
-/*#969cb3*/
-
 td.description {
     color: var(--dark-blue);
 }
@@ -170,26 +140,14 @@ td.expense {
     color: #e92929;
 }
 
-/*var(--green)*/
-
-/*#238636*/
-
 a {
     color: var(--green);
     text-decoration: none;
 }
 
-/*var(--light-green)*/
-
-/*var(--green)*/
-
 a:hover {
     color: var(--light-green);
 }
-
-/*var(--green)*/
-
-/*#238636*/
 
 button {
     width: 100%;
@@ -201,10 +159,6 @@ button {
     border-radius: 0.25rem;
     cursor: pointer;
 }
-
-/*var(--light-green)*/
-
-/*#33a84b*/
 
 button:hover {
     background: var(--light-green);
@@ -244,10 +198,6 @@ button:hover {
     z-index: 999;
 }
 
-/*#f0F2f5*/
-
-/*#0d1117*/
-
 .modal {
     background: #f0F2f5;
     padding: 2.4rem;
@@ -268,10 +218,6 @@ button:hover {
 #form h2 {
     margin-top: 0;
 }
-
-/*none*/
-
-/*#161b22*/
 
 input {
     border: none;
@@ -340,10 +286,6 @@ input[type=number] {
     margin-top: 0.8rem;
 }
 
-/*none*/
-
-/*#969cb3*/
-
 .input-group small {
     opacity: 0.4;
 }
@@ -369,8 +311,6 @@ footer {
     color: var(--dark-blue);
     opacity: 0.6;
 }
-
-/*dark-mode-active*/
 
 body.dark-mode-active {
     background: #0d1117;
@@ -425,8 +365,6 @@ button:hover.dark-mode-active {
 td.description.dark-mode-active {
     color: #969cb3;
 }
-
-/*responsive*/
 
 @media (min-width: 800px) {
     html {

@@ -104,7 +104,7 @@ function removeTransaction(index) {
 
 function createTransactions(element, index, cssClass) {
     const amount = formatCurrency(element.amount);
-    const darkClass = checkCheckbox()? 'dark-mode-active' : '';
+    const darkClass = getStorageDarkMode() ? 'dark-mode-active' : '';
     const html = `
     <td class="description ${darkClass}">${element.description}</td>
     <td class="${cssClass} ${darkClass}">${amount}</td>
@@ -185,69 +185,87 @@ function formatValues(values) {
 
 //Local storage
 function getStorageTransactions() {
-    return localStorage.getItem('dev.finances-transactions') !== null ? 
-    JSON.parse(localStorage.getItem('dev.finances-transactions')) : [];
+    return localStorage.getItem('dev.finances-transactions') !== null ?
+        JSON.parse(localStorage.getItem('dev.finances-transactions')) : [];
 }
 
 function getStorageDarkMode() {
-    return localStorage.getItem('dark-mode')? true : false;
+    return localStorage.getItem('dark-mode') ? true : false;
 }
 
-function setStorage(value) {
-    localStorage.setItem('dev.finances-transactions', JSON.stringify(transactions));
+function setStorageDarkMode(value) {
     localStorage.setItem('dark-mode', value);
 }
 
-//dark mode
-function darkMode() {
-
-    if (checkCheckbox()) {
-        document.querySelector('body').classList.add('dark-mode-active');
-        document.querySelectorAll('.card')[0].classList.add('dark-mode-active');
-        document.querySelectorAll('.card')[1].classList.add('dark-mode-active');
-        document.querySelector('.card.total').classList.add('dark-mode-active');
-        document.querySelector('a').classList.add('dark-mode-active');
-        document.querySelectorAll('#data-table th')[0].classList.add('dark-mode-active');
-        document.querySelectorAll('#data-table th')[1].classList.add('dark-mode-active');
-        document.querySelectorAll('#data-table th')[2].classList.add('dark-mode-active');
-        document.querySelectorAll('#data-table th')[3].classList.add('dark-mode-active');
-        document.querySelector('.modal').classList.add('dark-mode-active');
-        document.querySelector('input#description').classList.add('dark-mode-active');
-        document.querySelector('input#amount').classList.add('dark-mode-active');
-        document.querySelector('input#date').classList.add('dark-mode-active');
-        document.querySelector('button').classList.add('dark-mode-active');
-        document.querySelector('.input-group small').classList.add('dark-mode-active');
-        document.querySelector('#form h2').classList.add('dark-mode-active');
-
-        reload();
-    }
-    else {
-        document.querySelector('body').classList.remove('dark-mode-active');
-        document.querySelectorAll('.card')[0].classList.remove('dark-mode-active');
-        document.querySelectorAll('.card')[1].classList.remove('dark-mode-active');
-        document.querySelector('.card.total').classList.remove('dark-mode-active');
-        document.querySelector('a').classList.remove('dark-mode-active');
-        document.querySelector('#data-table th').classList.remove('dark-mode-active');
-        document.querySelectorAll('#data-table th')[1].classList.remove('dark-mode-active');
-        document.querySelectorAll('#data-table th')[2].classList.remove('dark-mode-active');
-        document.querySelectorAll('#data-table th')[3].classList.remove('dark-mode-active');
-        document.querySelector('.modal').classList.remove('dark-mode-active');
-        document.querySelector('input#description').classList.remove('dark-mode-active');
-        document.querySelector('input#amount').classList.remove('dark-mode-active');
-        document.querySelector('input#date').classList.remove('dark-mode-active');
-        document.querySelector('button').classList.remove('dark-mode-active');
-        document.querySelector('.input-group small').classList.remove('dark-mode-active');
-        document.querySelector('#form h2').classList.remove('dark-mode-active');
-        
-        reload();
-    }
+function removeStorage(key) {
+    localStorage.removeItem(key);
 }
 
-function checkCheckbox() {
-    if (document.querySelector('input.dark-mode-checkbox').checked) {
-        return true;
+function setStorage() {
+    localStorage.setItem('dev.finances-transactions', JSON.stringify(transactions));
+}
+
+//dark mode
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeInput = document.querySelector('.dark-mode-checkbox');
+
+    if (getStorageDarkMode()) {
+        addDarkMode();
+        darkModeInput.checked = true;
     }
-    return false;
+
+    darkModeInput.addEventListener('change', () => {
+        if (darkModeInput.checked) {
+            setStorageDarkMode(true);
+            addDarkMode();
+        }
+        else {
+            removeStorage('dark-mode');
+            removeDarkMode();
+        }
+    })
+})
+
+function addDarkMode() {
+    document.querySelector('body').classList.add('dark-mode-active');
+    document.querySelectorAll('.card')[0].classList.add('dark-mode-active');
+    document.querySelectorAll('.card')[1].classList.add('dark-mode-active');
+    document.querySelector('.card.total').classList.add('dark-mode-active');
+    document.querySelector('a').classList.add('dark-mode-active');
+    document.querySelectorAll('#data-table th')[0].classList.add('dark-mode-active');
+    document.querySelectorAll('#data-table th')[1].classList.add('dark-mode-active');
+    document.querySelectorAll('#data-table th')[2].classList.add('dark-mode-active');
+    document.querySelectorAll('#data-table th')[3].classList.add('dark-mode-active');
+    document.querySelector('.modal').classList.add('dark-mode-active');
+    document.querySelector('input#description').classList.add('dark-mode-active');
+    document.querySelector('input#amount').classList.add('dark-mode-active');
+    document.querySelector('input#date').classList.add('dark-mode-active');
+    document.querySelector('button').classList.add('dark-mode-active');
+    document.querySelector('.input-group small').classList.add('dark-mode-active');
+    document.querySelector('#form h2').classList.add('dark-mode-active');
+
+    reload();
+}
+
+function removeDarkMode() {
+    document.querySelector('body').classList.remove('dark-mode-active');
+    document.querySelectorAll('.card')[0].classList.remove('dark-mode-active');
+    document.querySelectorAll('.card')[1].classList.remove('dark-mode-active');
+    document.querySelector('.card.total').classList.remove('dark-mode-active');
+    document.querySelector('a').classList.remove('dark-mode-active');
+    document.querySelector('#data-table th').classList.remove('dark-mode-active');
+    document.querySelectorAll('#data-table th')[1].classList.remove('dark-mode-active');
+    document.querySelectorAll('#data-table th')[2].classList.remove('dark-mode-active');
+    document.querySelectorAll('#data-table th')[3].classList.remove('dark-mode-active');
+    document.querySelector('.modal').classList.remove('dark-mode-active');
+    document.querySelector('input#description').classList.remove('dark-mode-active');
+    document.querySelector('input#amount').classList.remove('dark-mode-active');
+    document.querySelector('input#date').classList.remove('dark-mode-active');
+    document.querySelector('button').classList.remove('dark-mode-active');
+    document.querySelector('.input-group small').classList.remove('dark-mode-active');
+    document.querySelector('#form h2').classList.remove('dark-mode-active');
+
+    reload();
 }
 
 //Início / reload
@@ -255,8 +273,6 @@ function init() {
     createDOM();
     updateBalance();
     getStorageTransactions();
-    console.log(getStorageDarkMode())
-    getStorageDarkMode();
 }
 
 function reload() {
