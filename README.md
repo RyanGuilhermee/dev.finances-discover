@@ -4,7 +4,7 @@ Esta aplicação foi desenvolvida na maratona Discover, sob a instrução do [Ma
 
 ## Experiência
 
-Além de colocar em prática muito do que eu aprendi até aqui, ampliei meus horizontes em relação ao desenvolvimento. <br>
+Além de colocar em prática muito do que eu aprendi até aqui, ampliei meus horizontes em relação ao desenvolvimento. 
 Desenvolver não se trata apenas do código, e sim um conjunto de ideias + criatividade + planejamento + muita pesquisa + enfim, 
 a tangente vai longe. Dessa forma, me senti mais confiante para desenvolver sem me sentir tão perdido. 😉
 
