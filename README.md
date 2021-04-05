@@ -1,5 +1,8 @@
  # <img src="assets/logo.svg" height="30px"> 
 
+ ![interface](./assets/interface.jpeg)
+ ![interface](./assets/dark-interface.jpeg)
+
 Esta aplicação foi desenvolvida na maratona Discover, sob a instrução do [Mayk Brito](https://github.com/maykbrito). 
 
 ## Experiência
